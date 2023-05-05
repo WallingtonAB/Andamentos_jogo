@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RPG Game</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+      #player {
+        font-size: 2em;
+        color: blue;
+      }
+      .enemy {
+        font-size: 2em;
+        color: red;
+        margin: 10px;
+      }
+      #message {
+        font-size: 1.5em;
+        margin-top: 20px;
+      }
+      button {
+        font-size: 1.2em;
+        margin-top: 20px;
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>RPG Game</h1>
+    <p>Click the Attack button to attack the enemies.</p>
+    <div id="player">Player: 100 HP</div>
+    <div id="enemies"></div>
+    <div id="message"></div>
+    <button onclick="attack()">Attack</button>
+
+    <script>
+      // Define variables
+      var playerHP = 100;
+      var enemies = [
+        { name: "Enemy 1", hp: 50 },
+        { name: "Enemy 2", hp: 75 },
+        { name: "Enemy 3", hp: 100 },
+      ];
+
+      // Display enemies
+      var enemiesDiv = document.getElementById("enemies");
+      for (var i = 0; i < enemies.length; i++) {
+        var enemyDiv = document.createElement("div");
+        enemyDiv.className = "enemy";
+        enemyDiv.innerHTML = enemies[i].name + ": " + enemies[i].hp + " HP";
+        enemiesDiv.appendChild(enemyDiv);
+      }
+
+      // Attack function
+      function attack() {
+        // Player attack
+        var playerAttack = Math.floor(Math.random() * 10) + 1;
+        var enemyIndex = Math.floor(Math.random() * enemies.length);
+        var enemy = enemies[enemyIndex];
+        enemy.hp -= playerAttack;
+        if (enemy.hp <= 0) {
+          enemies.splice(enemyIndex, 1);
+        }
+        var enemyDivs = document.getElementsByClassName("enemy");
+        for (var i = 0; i < enemyDivs.length; i++) {
+          enemyDivs[i].innerHTML = enemies[i].name + ": " + enemies[i].hp + " HP";
+        }
+
+        // Enemies attack
+        for (var i = 0; i < enemies.length; i++) {
+          var enemyAttack = Math.floor(Math.random() * 10) + 1;
+          playerHP -= enemyAttack;
+        }
+        document.getElementById("player").innerHTML = "Player: " + playerHP + " HP";
+
+        // Display message
+        var messageDiv = document.getElementById("message");
+        if (enemies.length === 0) {
+          messageDiv.innerHTML = "You won!";
+          document.getElementsByTagName("button")[0].disabled = true;
+        } else if (playerHP <= 0) {
+          messageDiv.innerHTML = "You lost!";
+          document.getElementsByTagName("button")[0].disabled = true;
+        } else {
+          messageDiv.innerHTML = "You attacked " + enemy.name + " for " + playerAttack + " damage. Enemies attacked you for " + (enemies.length * enemyAttack) + " damage.";
+        }
+      }
+    </script>
+  </body>
+</html>

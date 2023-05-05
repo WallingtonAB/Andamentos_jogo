@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RPG Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>RPG Game</h1>
+    <div class="game">
+        <div class="player-info">
+            <h2>Player</h2>
+            <p>HP: <span id="player-hp">100</span></p>
+            <p>MP: <span id="player-mp">50</span></p>
+            <p>Level: <span id="player-level">1</span></p>
+            <p>XP: <span id="player-xp">0</span></p>
+        </div>
+        <div class="enemy-info">
+            <h2>Enemy</h2>
+            <p>Name: <span id="enemy-name">Goblin</span></p>
+            <p>HP: <span id="enemy-hp">50</span></p>
+            <p>MP: <span id="enemy-mp">0</span></p>
+        </div>
+        <div class="battle">
+            <button onclick="playerAttack()">Attack</button>
+            <button onclick="playerDefend()">Defend</button>
+        </div>
+        <div class="message">
+            <p id="message"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

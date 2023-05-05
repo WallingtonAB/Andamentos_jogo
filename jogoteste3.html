@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <title>Jogo de RPG de Turnos</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <h1>Jogo de RPG de Turnos</h1>
+    <div id="menu">
+      <button onclick="startGame()">Iniciar jogo</button>
+    </div>
+    <div id="gameArea" style="display:none">
+      <div id="playerStats">
+        <h2>Jogador</h2>
+        <p>HP: <span id="playerHP"></span></p>
+        <p>MP: <span id="playerMP"></span></p>
+      </div>
+      <div id="enemyStats">
+        <h2>Inimigo</h2>
+        <p>HP: <span id="enemyHP"></span></p>
+        <p>MP: <span id="enemyMP"></span></p>
+      </div>
+      <div id="battleArea">
+        <button onclick="playerAttack()">Atacar</button>
+        <button onclick="playerHeal()">Cura</button>
+      </div>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>
